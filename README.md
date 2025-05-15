@@ -6,7 +6,7 @@
 ## 커스텀 History
 
 - 2024.12.03 - 메인 Header 이미지 변경  
-  → 기존 배경 제거, 고해상도 이미지로 교체 (`HTML`, `CSS`)
+ - 기존 배경 제거, 고해상도 이미지로 교체 (`HTML`, `CSS`)
 
 - 2025.01.11 - 오늘의 명언(랜덤 명언) 생성기 추가  
   → 페이지 로드시 랜덤 문구 출력되는 스크립트 삽입 (`JavaScript`)
@@ -30,15 +30,15 @@
   → `border-image`, `clip-path` 활용 (`CSS`)
 
 - 2025.04.05 - 코드블럭
-  → `highlight.js` 로 글씨체 / 테마 변경
-  → copy, copied 버튼 기능 삽입 (`JavaScript`, `CSS`)
-  → 줄번호
+  - `highlight.js` 로 글씨체 / 테마 변경
+  - copy, copied 버튼 기능 삽입 (`JavaScript`, `CSS`)
+  - 줄번호
 
 - 2025.04.05 - 인라인 코드
-  → `` 백틱으로 손쉽게 인라인 블럭 추가하는 js
+  - `` 백틱으로 손쉽게 인라인 블럭 추가하는 js
 
 - 2025.04.05 - 코드블럭
-  → `highlight.js` 로 글씨체 / 테마 변경
+  - `highlight.js` 로 글씨체 / 테마 변경
 
 - 2025.04.18 - 마우스 커서 이펙트 추가  
   → 커서 따라 별똥별 이펙트 (`JavaScript`, Canvas API)
