@@ -2,6 +2,7 @@
 ## 티스토리 블로그(귀염둥이의 일기) 커마
 - 티스토리 블로그 커마용 소스 백업
   - 블로그 주소 https://awesomepossum.tistory.com
+  - 기본 레이아웃 정상우님의 hELLO 스킨 사용(https://github.com/pronist/hello)
 
 ## 커스텀 History
 
