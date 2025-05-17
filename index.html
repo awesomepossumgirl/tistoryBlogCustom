@@ -1,0 +1,1428 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" id="hELLO" x-data="{ dark: TTDARK, loading: true }" x-init="setTimeout(() => loading = false, 100)" lang="ko">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>[##_page_title_##] — [##_title_##]</title>
+    <link rel="alternate" type="application/rss+xml" title="[##_title_##]" href="[##_rss_url_##]">
+    <link rel="stylesheet" :href='"//cdn.jsdelivr.net/gh/sunn-us/SUIT/fonts/static/woff2/SUIT.css"'>
+    <link rel="stylesheet" :href='"//cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"'>
+    <link rel="stylesheet" :href='"//cdn.jsdelivr.net/gh/wan2land/d2coding/d2coding-subset.css"'>
+    <link rel="stylesheet" :href="`//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.7.0/build/styles/${dark ? skinOptions.hljsDark : skinOptions.hljs}.min.css`">
+    <!-- 구글 폰트 추가 -->
+    <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Gowun+Batang&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Gowun+Batang&family=Grandiflora+One&display=swap" rel="stylesheet">
+  
+    <style>
+      /*
+      :root {
+        --h-width: [##_var_width_##]px;
+      }
+      */
+      :root {
+        --h-width: 860px;
+      }
+    </style>
+    <script>
+      window.skinOptions = {
+        sidebar: '[##_var_sidebar_##]',
+        foldableCategory: '[##_var_foldable-category_##]',
+        foldableReply: '[##_var_foldable-reply_##]',
+        width: '[##_var_width_##]',
+        toc: '[##_var_toc_##]',
+        scrollspy: '[##_var_scrollspy_##]',
+        hljs: '[##_var_hljs_##]',
+        hljsDark: '[##_var_hljs-dark_##]'
+      }
+    </script>
+    <!-- 다크모드 주석처리 -->
+    <!--
+    <script>
+      if (!('TTDARK' in localStorage)) {
+        localStorage.TTDARK = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'Y' : 'N'
+      }
+
+      window.TTDARK = localStorage.TTDARK === 'Y'
+
+      document.documentElement.classList.toggle('dark', TTDARK)
+    </script>
+    -->
+
+    <script defer src="./images/vendor.2ed71520030bce91499d.js"></script>
+    <script defer src="./images/app.2ed71520030bce91499d.js"></script>
+    <link rel="stylesheet" href="./style.css">
+    <script defer src="./images/script.zlRw1O4MUO2N5jT7r7Nt.js"></script>
+    <meta name="google-site-verification" content="gCamRJO8cTRhdS0Ipq_UPFHrTkX7TZHwlN8tqE4NIA4" />
+    <meta name="naver-site-verification" content="0333eca4d7f5806dc5a5c3b6a1882b765d93ce02" />
+    <!-- Syntax Highlighter hightlight.js vs2015 테마 적용(24.11.09) -->
+    <link rel="stylesheet" href="./images/vs2015.min.css">
+    <script src="./images/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <!-- Syntax Highlighter hightlight.js vs2015 테마 적용(24.11.09) 끝 -->
+    <!-- 코드블럭 Copy 버튼 커스텀(24.11.10) -->
+    <script type="text/javascript" src="./images/clipboard.min.js"></script>
+    <script>
+      window.addEventListener('load', function () {
+        document.querySelectorAll('pre[id^="code"]').forEach(function (e, index) {
+          let button = document.createElement('button');
+          button.className = 'copy-button';
+          button.style.cursor = 'pointer';
+          button.setAttribute('data-clipboard-text', e.innerText);
+          button.addEventListener('mouseleave', function(event) {
+            event.currentTarget.setAttribute('class', 'copy-button');
+          });
+
+          var copyIcon = Object.assign(document.createElement('img'), { src: './images/copy_clipboard_icon.png', alt: 'Copy Icon' });
+          button.appendChild(copyIcon);
+          e.appendChild(button);
+        });
+
+
+        var clipboard = new ClipboardJS('.copy-button');
+        clipboard.on('success', function (e) {
+          var button = e.trigger;
+          var successIcon = Object.assign(document.createElement('img'), { src: './images/check_clipboard_icon.png', alt: 'Copy Complete Icon' });
+          var copyIcon = Object.assign(document.createElement('img'), { src: './images/copy_clipboard_icon.png', alt: 'Copy Icon' });
+
+          button.innerHTML = '';
+          button.appendChild(successIcon);
+          button.setAttribute('class', 'copy-button copy-message');
+
+          setTimeout(function() {
+            button.setAttribute('class', 'copy-button');
+            button.innerHTML = '';
+            button.appendChild(copyIcon);            
+          }, 1500);
+        });
+      });
+    </script>
+    <!-- 코드블럭 Copy 버튼 커스텀(24.11.10) 끝 -->
+    <!-- 마우스 이펙트 팅커벨 커스텀(24.11.10) -->
+    <script type="text/javascript">
+      // <![CDATA[
+      var colour="random"; // in addition to "random" can be set to any valid colour eg "#f0f" or "red"
+      var sparkles=50;
+
+      /****************************
+      *  Tinkerbell Magic Sparkle *
+      *(c)2005-13 mf2fm web-design*
+      *  http://www.mf2fm.com/rv  *
+      * DON'T EDIT BELOW THIS BOX *
+      ****************************/
+      var x=ox=400;
+      var y=oy=300;
+      var swide=800;
+      var shigh=600;
+      var sleft=sdown=0;
+      var tiny=new Array();
+      var star=new Array();
+      var starv=new Array();
+      var starx=new Array();
+      var stary=new Array();
+      var tinyx=new Array();
+      var tinyy=new Array();
+      var tinyv=new Array();
+
+      window.onload=function() { if (document.getElementById) {
+        var i, rats, rlef, rdow;
+        for (var i=0; i<sparkles; i++) {
+          var rats=createDiv(3, 3);
+          rats.style.visibility="hidden";
+          rats.style.zIndex="999";
+          document.body.appendChild(tiny[i]=rats);
+          starv[i]=0;
+          tinyv[i]=0;
+          var rats=createDiv(5, 5);
+          rats.style.backgroundColor="transparent";
+          rats.style.visibility="hidden";
+          rats.style.zIndex="999";
+          var rlef=createDiv(1, 5);
+          var rdow=createDiv(5, 1);
+          rats.appendChild(rlef);
+          rats.appendChild(rdow);
+          rlef.style.top="2px";
+          rlef.style.left="0px";
+          rdow.style.top="0px";
+          rdow.style.left="2px";
+          document.body.appendChild(star[i]=rats);
+        }
+        set_width();
+        sparkle();
+      }}
+
+      function sparkle() {
+        var c;
+        if (Math.abs(x-ox)>1 || Math.abs(y-oy)>1) {
+          ox=x;
+          oy=y;
+          for (c=0; c<sparkles; c++) if (!starv[c]) {
+            star[c].style.left=(starx[c]=x)+"px";
+            star[c].style.top=(stary[c]=y+1)+"px";
+            star[c].style.clip="rect(0px, 5px, 5px, 0px)";
+            star[c].childNodes[0].style.backgroundColor=star[c].childNodes[1].style.backgroundColor=(colour=="random")?newColour():colour;
+            star[c].style.visibility="visible";
+            starv[c]=50;
+            break;
+          }
+        }
+        for (c=0; c<sparkles; c++) {
+          if (starv[c]) update_star(c);
+          if (tinyv[c]) update_tiny(c);
+        }
+        setTimeout("sparkle()", 40);
+      }
+
+      function update_star(i) {
+        if (--starv[i]==25) star[i].style.clip="rect(1px, 4px, 4px, 1px)";
+        if (starv[i]) {
+          stary[i]+=1+Math.random()*3;
+          starx[i]+=(i%5-2)/5;
+          if (stary[i]<shigh+sdown) {
+            star[i].style.top=stary[i]+"px";
+            star[i].style.left=starx[i]+"px";
+          }
+          else {
+            star[i].style.visibility="hidden";
+            starv[i]=0;
+            return;
+          }
+        }
+        else {
+          tinyv[i]=50;
+          tiny[i].style.top=(tinyy[i]=stary[i])+"px";
+          tiny[i].style.left=(tinyx[i]=starx[i])+"px";
+          tiny[i].style.width="2px";
+          tiny[i].style.height="2px";
+          tiny[i].style.backgroundColor=star[i].childNodes[0].style.backgroundColor;
+          star[i].style.visibility="hidden";
+          tiny[i].style.visibility="visible"
+        }
+      }
+
+      function update_tiny(i) {
+        if (--tinyv[i]==25) {
+          tiny[i].style.width="1px";
+          tiny[i].style.height="1px";
+        }
+        if (tinyv[i]) {
+          tinyy[i]+=1+Math.random()*3;
+          tinyx[i]+=(i%5-2)/5;
+          if (tinyy[i]<shigh+sdown) {
+            tiny[i].style.top=tinyy[i]+"px";
+            tiny[i].style.left=tinyx[i]+"px";
+          }
+          else {
+            tiny[i].style.visibility="hidden";
+            tinyv[i]=0;
+            return;
+          }
+        }
+        else tiny[i].style.visibility="hidden";
+      }
+
+      document.onmousemove=mouse;
+      function mouse(e) {
+        if (e) {
+          y=e.pageY;
+          x=e.pageX;
+        }
+        else {
+          set_scroll();
+          y=event.y+sdown;
+          x=event.x+sleft;
+        }
+      }
+
+      window.onscroll=set_scroll;
+      function set_scroll() {
+        if (typeof(self.pageYOffset)=='number') {
+          sdown=self.pageYOffset;
+          sleft=self.pageXOffset;
+        }
+        else if (document.body && (document.body.scrollTop || document.body.scrollLeft)) {
+          sdown=document.body.scrollTop;
+          sleft=document.body.scrollLeft;
+        }
+        else if (document.documentElement && (document.documentElement.scrollTop || document.documentElement.scrollLeft)) {
+          sleft=document.documentElement.scrollLeft;
+          sdown=document.documentElement.scrollTop;
+        }
+        else {
+          sdown=0;
+          sleft=0;
+        }
+      }
+
+      window.onresize=set_width;
+      function set_width() {
+        var sw_min=999999;
+        var sh_min=999999;
+        if (document.documentElement && document.documentElement.clientWidth) {
+          if (document.documentElement.clientWidth>0) sw_min=document.documentElement.clientWidth;
+          if (document.documentElement.clientHeight>0) sh_min=document.documentElement.clientHeight;
+        }
+        if (typeof(self.innerWidth)=='number' && self.innerWidth) {
+          if (self.innerWidth>0 && self.innerWidth<sw_min) sw_min=self.innerWidth;
+          if (self.innerHeight>0 && self.innerHeight<sh_min) sh_min=self.innerHeight;
+        }
+        if (document.body.clientWidth) {
+          if (document.body.clientWidth>0 && document.body.clientWidth<sw_min) sw_min=document.body.clientWidth;
+          if (document.body.clientHeight>0 && document.body.clientHeight<sh_min) sh_min=document.body.clientHeight;
+        }
+        if (sw_min==999999 || sh_min==999999) {
+          sw_min=800;
+          sh_min=600;
+        }
+        swide=sw_min;
+        shigh=sh_min;
+      }
+
+      function createDiv(height, width) {
+        var div=document.createElement("div");
+        div.style.position="absolute";
+        div.style.height=height+"px";
+        div.style.width=width+"px";
+        div.style.overflow="hidden";
+        return (div);
+      }
+
+      function newColour() {
+        var c=new Array();
+        c[0]=255;
+        c[1]=Math.floor(Math.random()*256);
+        c[2]=Math.floor(Math.random()*(256-c[1]/2));
+        c.sort(function(){return (0.5 - Math.random());});
+        return ("rgb("+c[0]+", "+c[1]+", "+c[2]+")");
+      }
+      // ]]>
+    </script>
+    <!-- 마우스 이펙트 팅커벨 커스텀(24.11.10) 끝 -->
+    <!-- span 없애는 함수 커스텀(24.11.12) -->
+    <script>
+        // 
+        function removeSpanTags(htmlString) {
+            var regex = /<span\s+style\s*=\s*['"]color:\s*#333333;\s*text-align:\s*start;\s*['"]\s*>(.*?)<\/span>/g;
+            var result = htmlString.replace(regex, '$1');
+            console.log(result);
+            return result;
+          }
+        var spanElements = document.querySelectorAll('span[style="color: #333333; text-align: start;"]');  
+        spanElements.forEach(function(spanElement) {
+            var htmlString = spanElement.outerHTML;
+            var result = removeSpanTags(htmlString);
+            console.log(htmlString);
+            spanElement.outerHTML = result;
+          });   
+        
+        function removeDataKeSizeFromPTags(htmlString) {
+            var regex = /<p\s+data-ke-size\s*=\s*['"]size16['"]\s*(.*?)<\/p>/g;
+            var result = htmlString.replace(regex, '<p $1</p>');
+            // console.log(result);
+            return result;
+        }
+ 
+        var pElements = document.querySelectorAll('p[data-ke-size="size16"]');
+        pElements.forEach(function(pElement) {
+            var htmlString = pElement.outerHTML;
+            var result = removeDataKeSizeFromPTags(htmlString);
+            // console.log(htmlString);
+            pElement.outerHTML = result;
+        });
+      });
+    </script>
+    <!-- span 없애는 함수 커스텀(24.11.12) 끝 -->
+    <!-- 랜덤 명언 생성기(24.11.29) -->
+    <script defer type="module" charset="UTF-8" src="./images/sayDding.js"></script>
+    <!-- 랜덤 명언 생성기(24.11.29) 끝 -->    
+  </head>
+  <body class="min-w-xs overflow-x-hidden bg-h-100 text-h-900 dark:bg-h-800 dark:text-h-200" id="[##_body_id_##]">
+    <div class="w-screen h-screen fixed top-0 left-0 z-50 flex items-center justify-center bg-h-100 dark:bg-h-800" id="loader" x-show="loading" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" x-transition:leave="transition ease-in duration-300" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0">
+      <div class="rounded-full w-14 h-14 my-14 mx-auto text-base relative border-2 border-solid border-h-500/20 border-l-h-500 dark:border-h-100/20 dark:border-l-h-100 animate-loading"></div>
+    </div>
+    <div class="fixed top-0 w-screen z-50" x-data="indicator" @scroll.window="indicate">
+      <div class="w-screen">
+        <div class="w-0 h-0.5 bg-h-900 rounded bg-h-800 dark:bg-h-200" x-ref="indicator"></div>
+      </div>
+    </div>
+    <s_t3>
+      <div class="pl-0 break-all <s_if_var_sidebar>xl:pl-64</s_if_var_sidebar>" x-data="{ sidebar: false }">
+        <main class="pb-14 lg:pb-18 relative" id="main">
+          <s_cover_group>
+            <div class="flex flex-col">
+              <s_cover_rep>
+                <s_cover name="list">
+                  <section class="flex flex-col items-center px-4 lg:px-0 lg:w-idx lg:mx-auto" data-mode="list">
+                    <div class="text-3xl font-bold text-h-600 dark:text-h-200 my-10 empty:my-10 lg:my-20">[##_cover_title_##]</div>
+                    <div class="list">
+                      <s_cover_item>
+                        <div class="post">
+                          <s_cover_item_thumbnail><a class="thumbnail" href="[##_cover_item_url_##]"><img class="lazyload object-cover bg-h-100" data-src="[##_cover_item_thumbnail_##]" data-sizes="auto" alt=""></a></s_cover_item_thumbnail>
+                          <s_cover_item_article_info>
+                            <div class="description flex flex-col">
+                              <div class="title"><a class="text-h-800 dark:text-h-200" href="[##_cover_item_url_##]">[##_cover_item_title_##]</a></div>
+                              <div class="metainfo flex gap-x-1 text-sm"><time class="text-h-400">[##_cover_item_simple_date_##]</time><a class="text-sm text-h-400" href="[##_cover_item_category_url_##]">· [##_cover_item_category_##]</a></div>
+                              <div class="summary relative overflow-hidden leading-7 text-sm text-h-500 dark:text-h-400">[##_cover_item_summary_##]</div>
+                            </div>
+                          </s_cover_item_article_info>
+                          <s_cover_item_not_article_info>
+                            <div class="description flex flex-col">
+                              <div class="title"><a class="text-h-800 dark:text-h-200" href="[##_cover_item_url_##]">[##_cover_item_title_##]</a></div>
+                              <div class="summary">[##_cover_item_summary_##]</div>
+                            </div>
+                          </s_cover_item_not_article_info>
+                        </div>
+                      </s_cover_item>
+                    </div>
+                  </section>
+                </s_cover>
+                <s_cover name="grid">
+                  <section class="flex flex-col items-center px-4 lg:px-0 lg:w-idx lg:mx-auto" data-mode="grid">
+                    <div class="text-3xl font-bold text-h-600 dark:text-h-200 my-10 empty:my-10 lg:my-20">[##_cover_title_##]</div>
+                    <div class="list">
+                      <s_cover_item>
+                        <div class="post">
+                          <s_cover_item_thumbnail><a class="thumbnail" href="[##_cover_item_url_##]"><img class="lazyload object-cover bg-h-100" data-src="[##_cover_item_thumbnail_##]" data-sizes="auto" alt=""></a></s_cover_item_thumbnail>
+                          <s_cover_item_article_info>
+                            <div class="description flex flex-col">
+                              <div class="title"><a class="text-h-800 dark:text-h-200" href="[##_cover_item_url_##]">[##_cover_item_title_##]</a></div>
+                              <div class="metainfo flex gap-x-1 text-sm"><time class="text-h-400">[##_cover_item_simple_date_##]</time><a class="text-sm text-h-400" href="[##_cover_item_category_url_##]">· [##_cover_item_category_##]</a></div>
+                              <div class="summary relative overflow-hidden leading-7 text-sm text-h-500 dark:text-h-400">[##_cover_item_summary_##]</div>
+                            </div>
+                          </s_cover_item_article_info>
+                          <s_cover_item_not_article_info>
+                            <div class="description flex flex-col">
+                              <div class="title"><a class="text-h-800 dark:text-h-200" href="[##_cover_item_url_##]">[##_cover_item_title_##]</a></div>
+                              <div class="summary">[##_cover_item_summary_##]</div>
+                            </div>
+                          </s_cover_item_not_article_info>
+                        </div>
+                      </s_cover_item>
+                    </div>
+                  </section>
+                </s_cover>
+                <s_cover name="zigzag">
+                  <section class="flex flex-col items-center px-4 lg:px-0 lg:w-idx lg:mx-auto" data-mode="zigzag">
+                    <div class="text-3xl font-bold text-h-600 dark:text-h-200 my-10 empty:my-10 lg:my-20">[##_cover_title_##]</div>
+                    <div class="list">
+                      <s_cover_item>
+                        <div class="post">
+                          <s_cover_item_thumbnail><a class="thumbnail" href="[##_cover_item_url_##]"><img class="lazyload object-cover bg-h-100" data-src="[##_cover_item_thumbnail_##]" data-sizes="auto" alt=""></a></s_cover_item_thumbnail>
+                          <s_cover_item_article_info>
+                            <div class="description flex flex-col">
+                              <div class="title"><a class="text-h-800 dark:text-h-200" href="[##_cover_item_url_##]">[##_cover_item_title_##]</a></div>
+                              <div class="metainfo flex gap-x-1 text-sm"><time class="text-h-400">[##_cover_item_simple_date_##]</time><a class="text-sm text-h-400" href="[##_cover_item_category_url_##]">· [##_cover_item_category_##]</a></div>
+                              <div class="summary relative overflow-hidden leading-7 text-sm text-h-500 dark:text-h-400">[##_cover_item_summary_##]</div>
+                            </div>
+                          </s_cover_item_article_info>
+                          <s_cover_item_not_article_info>
+                            <div class="description flex flex-col">
+                              <div class="title"><a class="text-h-800 dark:text-h-200" href="[##_cover_item_url_##]">[##_cover_item_title_##]</a></div>
+                              <div class="summary">[##_cover_item_summary_##]</div>
+                            </div>
+                          </s_cover_item_not_article_info>
+                        </div>
+                      </s_cover_item>
+                    </div>
+                  </section>
+                </s_cover>
+                <s_cover name="slideshow">
+                  <section class="flex flex-col items-center gap-y-10" data-mode="slideshow">
+                    <div class="swiper w-full h-screen">
+                      <div class="list swiper-wrapper">
+                        <s_cover_item>
+                          <div class="post swiper-slide">
+                            <s_cover_item_thumbnail><a class="thumbnail" href="[##_cover_item_url_##]"><img class="lazyload object-cover bg-h-100" data-src="[##_cover_item_thumbnail_##]" data-sizes="auto" alt=""></a></s_cover_item_thumbnail>
+                            <s_cover_item_article_info>
+                              <div class="description flex flex-col">
+                                <div class="title"><a class="text-h-800 dark:text-h-200" href="[##_cover_item_url_##]">[##_cover_item_title_##]</a></div>
+                                <div class="metainfo flex gap-x-1 text-sm"><time class="text-h-400">[##_cover_item_simple_date_##]</time><a class="text-sm text-h-400" href="[##_cover_item_category_url_##]">· [##_cover_item_category_##]</a></div>
+                                <div class="summary relative overflow-hidden leading-7 text-sm text-h-500 dark:text-h-400">[##_cover_item_summary_##]</div>
+                              </div>
+                            </s_cover_item_article_info>
+                            <s_cover_item_not_article_info>
+                              <div class="description flex flex-col">
+                                <div class="title"><a class="text-h-800 dark:text-h-200" href="[##_cover_item_url_##]">[##_cover_item_title_##]</a></div>
+                                <div class="summary">[##_cover_item_summary_##]</div>
+                              </div>
+                            </s_cover_item_not_article_info>
+                          </div>
+                        </s_cover_item>
+                      </div>
+                      <div class="swiper-button-next"></div>
+                      <div class="swiper-button-prev"></div>
+                    </div>
+                  </section>
+                </s_cover>
+              </s_cover_rep>
+            </div>
+          </s_cover_group>
+          <s_guest><!-- 방명록 -->
+            <div class="w-full px-4 mt-20 lg:mt-40 lg:px-0 lg:max-w-screen-lg lg:w-pem lg:mx-auto" id="guestbook">
+                <div class="cat-bitgum">          
+                  <img class="w-full right-0 top-0 z-0 object-cover" style="border-radius: 10px; width: 100%; height: 350px;" src="./images/catmoving.png" alt="Banner">
+                </div>
+              <s_guest_input_form>
+                <div class="p-5 w-full overflow-hidden mt-9 rounded-lg box-border h-32 lg:h-48 relative bg-h-200 dark:bg-h-700">
+                  <div class="box-border flex flex-col justify-between h-full gap-y-3"><label class="text-hidden" for="text">댓글</label><textarea class="border-0 resize-none p-0 pr-5 h-full overflow-x-hidden overflow-y-scroll text-sm box-border outline-none w-[calc(100%+theme(spacing.10))] bg-h-200 dark:bg-h-700" id="text" x-data="{ disabled: /^(?!.*tistory\.com).*$/.test(location.hostname) && T.config.NEED_COMMENT_LOGIN }" :placeholder='disabled && "이 블로그는 2차 도메인을 사용 중입니다. 댓글을 작성하려면 "+TistoryBlog.tistoryUrl+" 으로 이동해주세요."' :disabled="disabled" name="[##_guest_textarea_body_##]"></textarea>
+                    <div class="flex items-end justify-end">
+                      <s_guest_member>
+                        <s_guest_form>
+                          <div class="flex gap-x-2 mr-auto">
+                            <div class="flex gap-x-2 text-xs text-h-500 dark:text-h-200"><label for="name">이름</label><input class="border-0 inline-block outline-none w-16 lg:w-32 bg-h-200 dark:bg-h-700" id="name" autocomplete="username" name="[##_guest_input_name_##]" value="[##_guest_name_##]"></div>
+                            <div class="flex gap-x-2 text-xs text-h-500 dark:text-h-200"><label for="password">암호</label><input class="border-0 inline-block outline-none w-16 lg:w-32 bg-h-200 dark:bg-h-700" id="password" autocomplete="current-password" type="password" maxlength="8" name="[##_guest_input_password_##]" value="[##_guest_password_##]"></div>
+                          </div>
+                        </s_guest_form>
+                      </s_guest_member>
+                      <div class="flex items-end gap-x-4" x-data="{ secret: false }"><input class="hidden" id="secret" type="checkbox" name="[##_guest_input_is_secret_##]"><label id="secret-label" for="secret" @click="secret = ! secret"><span class="text-hidden">비밀글</span><i class="fa-solid" :class='{ "fa-lock": secret, "fa-unlock": ! secret }'></i></label><a href="#" onclick="[##_guest_onclick_submit_##]"><span class="text-hidden">댓글쓰기</span><i class="fa-solid fa-arrow-circle-down text-3xl leading-none text-h-900 dark:text-h-200"></i></a></div>
+                    </div>
+                  </div>
+                </div>
+              </s_guest_input_form>
+              <s_guest_container>
+                <div id="comments">
+                  <ol class="flex gap-y-5 mt-9 flex-col">
+                    <s_guest_rep>
+                      <li class="flex flex-col gap-y-5 border-b border-dotted border-h-400 pb-5" x-data="{ open: ! skinOptions.foldableReply, children: [] }" id="[##_guest_rep_id_##]" :class='{ "[&>div]:before:hidden": children.length === 0 }'>
+                        <div class="[##_guest_rep_class_##] flex flex-col gap-y-4 relative before:content-[''] before:absolute before:w-[1px] before:h-[calc(100%-65px)] before:left-[calc(theme(spacing.12)/2)] before:top-16 before:bg-h-300 dark:before:bg-h-400">
+                          <div>
+                            <div class="flex items-center gap-x-4"><img class="lazyload rounded-full" alt="" data-src="[##_guest_rep_logo_##]" data-sizes="auto" width="48" height="48">
+                              <div>
+                                <div class="text-sm font-bold text-h-600 dark:text-h-200 [&_img]:hidden">[##_guest_rep_name_##]</div><time class="text-h-400 text-xs">[##_guest_rep_date_##]</time>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="pl-16 leading-7 text-sm text-h-500 dark:text-h-300">[##_guest_rep_desc_##]</div>
+                          <div class="pl-16 flex gap-x-1 text-h-400 text-xs"><a href="#" onclick="[##_guest_rep_onclick_delete_##]">수정/삭제</a><a href="#" onclick="[##_guest_rep_onclick_reply_##]">댓글쓰기</a><template x-if="skinOptions.foldableReply && children.length > 0"><a class="more" href="#" @click.prevent="open = ! open" x-html="`댓글보기(${children.length})`"></a></template></div>
+                        </div>
+                        <s_guest_reply_container>
+                          <ol class="flex flex-col gap-y-5" x-show="open" x-init='children = $el.querySelectorAll("li")'>
+                            <s_guest_reply_rep>
+                              <li class="[&:last-child>div]:before:hidden" id="[##_guest_rep_id_##]">
+                                <div class="[##_guest_rep_class_##] flex flex-col gap-y-4 relative before:content-[''] before:absolute before:w-[1px] before:h-[calc(100%-65px)] before:left-[calc(theme(spacing.12)/2)] before:top-16 before:bg-h-300 dark:before:bg-h-400">
+                                  <div>
+                                    <div class="flex items-center gap-x-4"><img class="lazyload rounded-full" alt="" data-src="[##_guest_rep_logo_##]" data-sizes="auto" width="48" height="48">
+                                      <div>
+                                        <div class="text-sm font-bold text-h-600 dark:text-h-200 [&_img]:hidden">[##_guest_rep_name_##]</div><time class="text-h-400 text-xs">[##_guest_rep_date_##]</time>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="pl-16 leading-7 text-sm text-h-500 dark:text-h-300">[##_guest_rep_desc_##]</div>
+                                  <div class="pl-16 flex gap-x-1 text-h-400 text-xs"><a href="#" onclick="[##_guest_rep_onclick_delete_##]">수정/삭제</a></div>
+                                </div>
+                              </li>
+                            </s_guest_reply_rep>
+                          </ol>
+                        </s_guest_reply_container>
+                      </li>
+                    </s_guest_rep>
+                  </ol>
+                </div>
+              </s_guest_container>
+            </div>
+          </s_guest>
+          <s_article_rep>
+            <s_permalink_article_rep>
+              <div id="permalink">
+              <!-- Thumbnail Original -->
+              <!--
+                <header class="h-64 mb-10 flex justify-center items-center border-b border-b-solid border-b-h-200 dark:border-b-h-700 lg:mb-16">
+                  <s_article_rep_thumbnail>
+                    <div class='thumbnail absolute right-0 top-0 w-full h-64 before:backdrop-blur before:content-[""] before:absolute before:right-0 before:top-0 before:w-full before:h-64 before:bg-h-900/50 before:z-10 [&+.description]:text-h-200'><img class="absolute right-0 top-0 w-full h-64 z-0 object-cover" src="[##_article_rep_thumbnail_url_##]" alt=""></div>
+                  </s_article_rep_thumbnail>
+                  <div class="description flex flex-col items-center gap-y-3 z-20 relative mx-4 text-h-800 dark:text-h-200 lg:mx-0">
+                    <h1 class="text-center font-bold text-2xl lg:text-3xl">[##_article_rep_title_##]</h1>
+                    <div class="flex gap-x-1 text-sm"><time>[##_article_rep_date_##]</time><a href="[##_article_rep_category_link_##]">· [##_article_rep_category_##]</a><span class="admin flex gap-x-1">
+                        <s_ad_div><a href="[##_s_ad_m_link_##]">수정</a><a href="#" onclick="[##_s_ad_d_onclick_##]">삭제</a><a href="#" onclick="[##_s_ad_s2_onclick_##]">[##_s_ad_s1_label_##]</a></s_ad_div>
+                      </span></div>
+                  </div>
+                </header>
+                -->
+                <!-- 썸네일 헤더 커스텀 (24.11.10) -->
+                <!--
+                <header class="mt-20 mb-10 flex flex-col justify-end px-5 w-full lg:max-w-screen-lg lg:w-pem lg:px-0 lg:mx-auto">
+                -->
+                <header class="flex flex-col justify-end px-5 w-full lg:max-w-screen-lg lg:w-pem lg:px-0 lg:mx-auto gap-y-4">
+                  <div class="px-4 w-full lg:max-w-screen-lg lg:w-pem lg:px-0 lg:mx-auto">
+                  <br>
+                    <!-- 썸네일 nav (24.12.04) -->
+                    <div class="btn-17-nav-container">
+                      <nav class="nav-bar btn-17-nav absolute top-4 z-30 flex gap-4 bg-black bg-opacity-50 px-4 py-2 rounded-md">
+                        <a href="https://awesomepossum.tistory.com">
+                          <div class="btn-17">Home</div>
+                        </a>
+                        <a href="https://awesomepossum.tistory.com/category/Algorithm">
+                          <div class="btn-17 ">Algorithm</div>
+                        </a>
+                        <a href="https://awesomepossum.tistory.com/category/Coding">
+                          <div class="btn-17">Coding</div>
+                        </a>
+                        <a href="https://awesomepossum.tistory.com/category/ETC">
+                          <div class="btn-17">ETC.</div>
+                        </a>
+                        <a href="https://awesomepossum.tistory.com/guestbook">
+                          <div class="btn-17">Visitor</div>
+                        </a>
+                      </nav>
+                    </div>
+                    <br>
+                    <br>
+                    <!-- 썸네일 nav (24.12.04) 끝 -->
+                    <div id="dding_area"></div>  <!-- 랜덤 명언 생성기(24.11.29) 한 줄임 -->
+                    <div class="description text-h-800 dark:text-h-200 lg:mx-0">
+                      <div class="mb-6 mt-4 header-thumbnail">
+                      <img class="header-thumbnail" src="./images/purpleCoder.png" width="140" height="140">
+                    </div>
+                      <h1 class="font-extrabold mt-4 text-3xl lg:text-4xl">[##_article_rep_title_##]</h1>
+                      <div class="flex gap-x-2 mt-2 text-sm flex-wrap text-h-500 dark:text-h-200 font-medium">
+                        <div class="mt-4 mr-2">
+                          <a class="text-sm category-getter header-des-cate" href="[##_article_rep_category_link_##]">[##_article_rep_category_##]</a>
+                        </div>
+                        <div class="flex gap-x-2 mt-4">
+                          <time class="header-des">[##_article_rep_date_##]</time>
+                          <s_ad_div><a href="[##_s_ad_m_link_##]">수정</a><a href="#" onclick="[##_s_ad_d_onclick_##]">삭제</a><a href="#" onclick="[##_s_ad_s2_onclick_##]">[##_s_ad_s1_label_##]</a></s_ad_div>
+                        </div>
+                      </div>
+                      <div class="flex gap-x-1 text-sm"><span class="admin flex gap-x-1"></span></div>
+                    </div>   
+                  </div>                
+                </header>
+                <br>
+                <!-- 썸네일 헤더 커스텀 (24.11.10) 끝 -->
+               <div class="px-4 w-full lg:max-w-screen-lg lg:w-pem lg:px-0 lg:mx-auto">
+                  <article class="relative" id="content" x-ref="content">
+                    <div x-data="content">
+                      <s_if_var_toc><template x-if="$data.headings.length > 0">
+                          <div class="rounded-md p-5 mb-8 box-border bg-h-200 text-h-500 dark:bg-h-700 dark:text-h-200" id="TOC"><strong class="flex items-center justify-between text-overflow-hidden text-sm pb-2 mb-4 border-b border-solid border-h-400 dark:border-h-200"><span class="text-base">목차</span><i class="fas fa-bars"></i></strong>
+                            <ol class="flex flex-col gap-y-3"><template x-for="heading in $data.headings" :key="heading.id">
+                                <li :class='{ "pl-0": heading.tagName === "H2", "pl-4": heading.tagName === "H3" }'><a class="flex items-center justify-between text-sm duration-200 text-h-400 hover:text-h-600 dark:hover:text-h-200" :href="heading.href">
+                                    <div class="text-overflow-hidden" x-text="heading.text"></div><i class="fas fa-arrow-right scale-75"></i>
+                                  </a></li>
+                              </template></ol>
+                          </div>
+                        </template></s_if_var_toc>
+                      <div id="article" x-ref="article"><template x-ref="articleTemplate" x-teleport="#article">
+                          <div>[##_article_rep_desc_##]</div>
+                        </template></div>
+                      <s_if_var_scrollspy><template x-if="$data.headings.length > 0">
+                          <div class="2xl:absolute 2xl:top-0 2xl:h-full 2xl:ml-[calc(((1100px+theme(width.pem))/2)+theme(spacing.5))]" id="scrollspy" x-data="scrollspy" @scroll.window="scrollspy" x-transition:enter="transition ease-linear duration-200" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" x-transition:leave="transition ease-linear duration-200" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0" x-show="show">
+                            <div class="2xl:sticky 2xl:top-20"><button class="fixed top-20 right-0 w-8 h-8 z-30 rounded-md bg-h-300 text-h-500 dark:bg-h-700 dark:text-h-200 2xl:hidden" x-show="! open" @click="toggle"><span class="text-hidden">목차</span><i class="fa-solid fa-list-check"></i></button>
+                              <div class="max-h-[calc(100vh-theme(spacing.20)-theme(spacing.10)-theme(spacing.3)-2rem)] overflow-hidden w-56 text-sm box-border max-2xl:transition-[right] max-2xl:duration-200 max-2xl:rounded-xl max-2xl:fixed max-2xl:top-20 max-2xl:right-4 max-2xl:z-40 max-2xl:bg-h-200 max-2xl:dark:bg-h-700 2xl:block" :class='open ? "max-2xl:right-4" : "max-2xl:-right-60"'>
+                                <div class="overflow-x-hidden overflow-y-scroll max-h-[inherit] w-[calc(theme(spacing.56)+theme(spacing.5))]"><button class="absolute text-base top-2 right-4 text-h-500 dark:text-h-200 2xl:hidden" @click="toggle"><span class="text-hidden">목차 닫기</span><i class="fa-solid fa-xmark"></i></button>
+                                  <ol class="flex flex-col gap-y-3 max-2xl:p-6 max-2xl:pt-8 max-2xl:pr-14 2xl:px-8" x-ref="spy"><template x-for="heading in $data.headings" :key="heading.id">
+                                      <li class="text-h-400" :class='{ "pl-0": heading.tagName === "H2", "pl-4": heading.tagName === "H3" }'><a class="duration-200 text-h-400 hover:text-h-600 dark:hover:text-h-200" :href="heading.href" x-text="heading.text" :class='{ "text-h-600 dark:text-h-200": heading.active }'></a></li>
+                                    </template></ol>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </template></s_if_var_scrollspy>
+                    </div>
+                  </article>
+                  <div x-data="{ shown: false }" x-intersect.once="shown = true">
+                    <footer x-show="shown">
+                      <s_article_related>
+                        <div class="rounded-md p-5 mt-4 mb-2 box-border bg-h-200 text-h-500 dark:bg-h-700 dark:text-h-200">
+                          <div class="font-bold flex items-center justify-between text-overflow-hidden text-sm pb-2 mb-4 border-b border-solid border-h-400 dark:border-h-200"><span>'[##_article_rep_category_##]' 카테고리의 다른 글</span><i class="fas fa-bars"></i></div>
+                          <ul class="flex flex-col gap-y-2">
+                            <s_article_related_rep>
+                              <li><a class="flex items-center justify-between text-sm" href="[##_article_related_rep_link_##]">
+                                  <div class="text-overflow-hidden">[##_article_related_rep_title_##]</div><i class="fas fa-arrow-right scale-75"></i>
+                                </a></li>
+                            </s_article_related_rep>
+                          </ul>
+                        </div>
+                      </s_article_related>
+                      <s_tag_label>
+                        <div class="flex flex-wrap gap-x-1 text-[0]" id="tags">[##_tag_label_rep_##]</div>
+                      </s_tag_label>
+                      <div class="border-t border-b border-dotted border-h-400 mt-6 py-8 flex gap-x-5 items-center"><img class="lazyload rounded-full w-20 h-20" data-src="[##_image_##]" data-sizes="auto" width="80" height="80" alt="[##_blogger_##]">
+                        <div class="flex flex-col gap-y-1">
+                          <div class="text-h-800 dark:text-h-200 font-bold">[##_blogger_##]</div>
+                          <div class="leading-7 text-sm text-h-400">[##_desc_##]</div>
+                        </div>
+                      </div>
+                    </footer>
+                  </div>
+                </div>
+                <div class="px-4 lg:px-0 lg:max-w-screen-lg lg:w-pem lg:mx-auto" x-data="{ shown: false }" x-intersect.once="shown = true">
+                  <s_rp>
+                    <div x-show="shown">
+                      <s_rp_input_form>
+                        <div class="p-5 w-full overflow-hidden mt-9 rounded-lg box-border h-32 lg:h-48 relative bg-h-200 dark:bg-h-700">
+                          <div class="box-border flex flex-col justify-between h-full gap-y-3"><label class="text-hidden" for="text">댓글</label><textarea class="border-0 resize-none p-0 pr-5 h-full overflow-x-hidden overflow-y-scroll text-sm box-border outline-none w-[calc(100%+theme(spacing.10))] bg-h-200 dark:bg-h-700" id="text" x-data="{ disabled: /^(?!.*tistory\.com).*$/.test(location.hostname) && T.config.NEED_COMMENT_LOGIN }" :placeholder='disabled && "이 블로그는 2차 도메인을 사용 중입니다. 댓글을 작성하려면 "+TistoryBlog.tistoryUrl+" 으로 이동해주세요."' :disabled="disabled" name="[##_rp_input_comment_##]"></textarea>
+                            <div class="flex items-end justify-end">
+                              <s_rp_member>
+                                <s_rp_guest>
+                                  <div class="flex gap-x-2 mr-auto">
+                                    <div class="flex gap-x-2 text-xs text-h-500 dark:text-h-200"><label for="name">이름</label><input class="border-0 inline-block outline-none w-16 lg:w-32 bg-h-200 dark:bg-h-700" id="name" autocomplete="username" name="[##_rp_input_name_##]" value="[##_guest_name_##]"></div>
+                                    <div class="flex gap-x-2 text-xs text-h-500 dark:text-h-200"><label for="password">암호</label><input class="border-0 inline-block outline-none w-16 lg:w-32 bg-h-200 dark:bg-h-700" id="password" autocomplete="current-password" type="password" maxlength="8" name="[##_rp_input_password_##]" value="[##_guest_password_##]"></div>
+                                  </div>
+                                </s_rp_guest>
+                              </s_rp_member>
+                              <div class="flex items-end gap-x-4" x-data="{ secret: false }"><input class="hidden" id="secret" type="checkbox" name="[##_rp_input_is_secret_##]"><label id="secret-label" for="secret" @click="secret = ! secret"><span class="text-hidden">비밀글</span><i class="fa-solid" :class='{ "fa-lock": secret, "fa-unlock": ! secret }'></i></label><a href="#" onclick="[##_rp_onclick_submit_##]"><span class="text-hidden">댓글쓰기</span><i class="fa-solid fa-arrow-circle-down text-3xl leading-none text-h-900 dark:text-h-200"></i></a></div>
+                            </div>
+                          </div>
+                        </div>
+                      </s_rp_input_form>
+                      <s_rp_container>
+                        <div id="comments">
+                          <ol class="flex gap-y-5 mt-9 flex-col-reverse">
+                            <s_rp_rep>
+                              <li class="flex flex-col gap-y-5 border-b border-dotted border-h-400 pb-5" x-data="{ open: ! skinOptions.foldableReply, children: [] }" id="[##_rp_rep_id_##]" :class='{ "[&>div]:before:hidden": children.length === 0 }'>
+                                <div class="[##_rp_rep_class_##] flex flex-col gap-y-4 relative before:content-[''] before:absolute before:w-[1px] before:h-[calc(100%-65px)] before:left-[calc(theme(spacing.12)/2)] before:top-16 before:bg-h-300 dark:before:bg-h-400">
+                                  <div>
+                                    <div class="flex items-center gap-x-4"><img class="lazyload rounded-full" alt="" data-src="[##_rp_rep_logo_##]" data-sizes="auto" width="48" height="48">
+                                      <div>
+                                        <div class="text-sm font-bold text-h-600 dark:text-h-200 [&_img]:hidden">[##_rp_rep_name_##]</div><time class="text-h-400 text-xs">[##_rp_rep_date_##]</time>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="pl-16 leading-7 text-sm text-h-500 dark:text-h-300">[##_rp_rep_desc_##]</div>
+                                  <div class="pl-16 flex gap-x-1 text-h-400 text-xs"><a href="#" onclick="[##_rp_rep_onclick_delete_##]">수정/삭제</a><a href="#" onclick="[##_rp_rep_onclick_reply_##]">댓글쓰기</a><template x-if="skinOptions.foldableReply && children.length > 0"><a class="more" href="#" @click.prevent="open = ! open" x-html="`댓글보기(${children.length})`"></a></template></div>
+                                </div>
+                                <s_rp2_container>
+                                  <ol class="flex flex-col gap-y-5" x-show="open" x-init='children = $el.querySelectorAll("li")'>
+                                    <s_rp2_rep>
+                                      <li class="[&:last-child>div]:before:hidden" id="[##_rp_rep_id_##]">
+                                        <div class="[##_rp_rep_class_##] flex flex-col gap-y-4 relative before:content-[''] before:absolute before:w-[1px] before:h-[calc(100%-65px)] before:left-[calc(theme(spacing.12)/2)] before:top-16 before:bg-h-300 dark:before:bg-h-400">
+                                          <div>
+                                            <div class="flex items-center gap-x-4"><img class="lazyload rounded-full" alt="" data-src="[##_rp_rep_logo_##]" data-sizes="auto" width="48" height="48">
+                                              <div>
+                                                <div class="text-sm font-bold text-h-600 dark:text-h-200 [&_img]:hidden">[##_rp_rep_name_##]</div><time class="text-h-400 text-xs">[##_rp_rep_date_##]</time>
+                                              </div>
+                                            </div>
+                                          </div>
+                                          <div class="pl-16 leading-7 text-sm text-h-500 dark:text-h-300">[##_rp_rep_desc_##]</div>
+                                          <div class="pl-16 flex gap-x-1 text-h-400 text-xs"><a href="#" onclick="[##_rp_rep_onclick_delete_##]">수정/삭제</a></div>
+                                        </div>
+                                      </li>
+                                    </s_rp2_rep>
+                                  </ol>
+                                </s_rp2_container>
+                              </li>
+                            </s_rp_rep>
+                          </ol>
+                        </div>
+                      </s_rp_container>
+                    </div>
+                  </s_rp>
+                </div>
+              </div>
+            </s_permalink_article_rep>
+            <s_page_rep>
+              <div id="page">
+                <header class="h-64 mb-10 flex justify-center items-center border-b border-b-solid border-b-h-200 dark:border-b-h-700 lg:mb-16">
+                  <s_article_rep_thumbnail>
+                    <div class='thumbnail absolute right-0 top-0 w-full h-64 before:backdrop-blur before:content-[""] before:absolute before:right-0 before:top-0 before:w-full before:h-64 before:bg-h-900/50 before:z-10 [&+.description]:text-h-200'><img class="absolute right-0 top-0 w-full h-64 z-0 object-cover" src="[##_article_rep_thumbnail_url_##]" alt=""></div>
+                  </s_article_rep_thumbnail>
+                  <div class="description flex flex-col items-center gap-y-3 z-20 relative mx-4 text-h-800 dark:text-h-200 lg:mx-0">
+                    <h1 class="text-center font-bold text-2xl lg:text-3xl">[##_article_rep_title_##]</h1>
+                    <div class="flex gap-x-1 text-sm"><time>[##_article_rep_date_##]</time></div>
+                  </div>
+                </header>
+                <div class="px-4 w-full lg:max-w-screen-lg lg:w-pem lg:px-0 lg:mx-auto">
+                  <article class="relative" id="content" x-ref="content">
+                    <div x-data="content">
+                      <s_if_var_toc><template x-if="$data.headings.length > 0">
+                          <div class="rounded-md p-5 mb-8 box-border bg-h-200 text-h-500 dark:bg-h-700 dark:text-h-200" id="TOC"><strong class="flex items-center justify-between text-overflow-hidden text-sm pb-2 mb-4 border-b border-solid border-h-400 dark:border-h-200"><span class="text-base">목차</span><i class="fas fa-bars"></i></strong>
+                            <ol class="flex flex-col gap-y-3"><template x-for="heading in $data.headings" :key="heading.id">
+                                <li :class='{ "pl-0": heading.tagName === "H2", "pl-4": heading.tagName === "H3" }'><a class="flex items-center justify-between text-sm duration-200 text-h-400 hover:text-h-600 dark:hover:text-h-200" :href="heading.href">
+                                    <div class="text-overflow-hidden" x-text="heading.text"></div><i class="fas fa-arrow-right scale-75"></i>
+                                  </a></li>
+                              </template></ol>
+                          </div>
+                        </template></s_if_var_toc>
+                      <div id="article" x-ref="article"><template x-ref="articleTemplate" x-teleport="#article">
+                          <div>[##_article_rep_desc_##]</div>
+                        </template></div>
+                      <s_if_var_scrollspy><template x-if="$data.headings.length > 0">
+                          <div class="2xl:absolute 2xl:top-0 2xl:h-full 2xl:ml-[calc(((1100px+theme(width.pem))/2)+theme(spacing.5))]" id="scrollspy" x-data="scrollspy" @scroll.window="scrollspy" x-transition:enter="transition ease-linear duration-200" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" x-transition:leave="transition ease-linear duration-200" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0" x-show="show">
+                            <div class="2xl:sticky 2xl:top-20"><button class="fixed top-20 right-0 w-8 h-8 z-30 rounded-md bg-h-300 text-h-500 dark:bg-h-700 dark:text-h-200 2xl:hidden" x-show="! open" @click="toggle"><span class="text-hidden">목차</span><i class="fa-solid fa-list-check"></i></button>
+                              <div class="max-h-[calc(100vh-theme(spacing.20)-theme(spacing.10)-theme(spacing.3)-2rem)] overflow-hidden w-56 text-sm box-border max-2xl:transition-[right] max-2xl:duration-200 max-2xl:rounded-xl max-2xl:fixed max-2xl:top-20 max-2xl:right-4 max-2xl:z-40 max-2xl:bg-h-200 max-2xl:dark:bg-h-700 2xl:block" :class='open ? "max-2xl:right-4" : "max-2xl:-right-60"'>
+                                <div class="overflow-x-hidden overflow-y-scroll max-h-[inherit] w-[calc(theme(spacing.56)+theme(spacing.5))]"><button class="absolute text-base top-2 right-4 text-h-500 dark:text-h-200 2xl:hidden" @click="toggle"><span class="text-hidden">목차 닫기</span><i class="fa-solid fa-xmark"></i></button>
+                                  <ol class="flex flex-col gap-y-3 max-2xl:p-6 max-2xl:pt-8 max-2xl:pr-14 2xl:px-8" x-ref="spy"><template x-for="heading in $data.headings" :key="heading.id">
+                                      <li class="text-h-400" :class='{ "pl-0": heading.tagName === "H2", "pl-4": heading.tagName === "H3" }'><a class="duration-200 text-h-400 hover:text-h-600 dark:hover:text-h-200" :href="heading.href" x-text="heading.text" :class='{ "text-h-600 dark:text-h-200": heading.active }'></a></li>
+                                    </template></ol>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </template></s_if_var_scrollspy>
+                    </div>
+                  </article>
+                  <div x-data="{ shown: false }" x-intersect.once="shown = true">
+                    <footer x-show="shown">
+                      <div class="border-t border-b border-dotted border-h-400 mt-6 py-8 flex gap-x-5 items-center"><img class="lazyload rounded-full w-20 h-20" data-src="[##_image_##]" data-sizes="auto" width="80" height="80" alt="[##_blogger_##]">
+                        <div class="flex flex-col gap-y-1">
+                          <div class="text-h-800 dark:text-h-200 font-bold">[##_blogger_##]</div>
+                          <div class="leading-7 text-sm text-h-400">[##_desc_##]</div>
+                        </div>
+                      </div>
+                    </footer>
+                  </div>
+                </div>
+              </div>
+            </s_page_rep>
+            <s_article_protected>
+              <div id="protected">
+                <s_permalink_article_rep>
+                  <div class="py-20 flex flex-col justify-center items-center">
+                    <header class="flex flex-col items-center gap-y-2 mx-4 lg:mx-0"><a href="[##_article_rep_category_link_##]">[##_article_rep_category_##]</a>
+                      <h1 class="text-center font-bold text-2xl text-h-800 dark:text-h-200 lg:text-3xl">[##_article_rep_title_##]</h1>
+                      <div><time class="text-h-400 text-sm">[##_article_rep_date_##]</time></div>
+                    </header>
+                    <div class="flex flex-col items-center gap-y-4 px-4 w-full lg:max-w-screen-lg lg:w-pem lg:px-0 lg:mx-auto">
+                      <p class="text-center leading-7 mt-8 text-h-800 dark:text-h-200">보호되어 있는 글입니다.<br>내용을 보시려면 비밀번호를 입력하세요.</p><input class="inline-block h-10 border-0 text-sm px-3 w-48 outline-none bg-h-300 text-h-400 dark:bg-h-700 dark:text-h-200" type="password" maxlength="16" id="[##_article_password_##]" name="[##_article_password_##]" onkeydown="if (event.keyCode == 13)[##_article_dissolve_##]" placeholder="비밀번호">
+                    </div>
+                  </div>
+                </s_permalink_article_rep>
+              </div>
+            </s_article_protected>
+          </s_article_rep>
+          <s_notice_rep>
+            <s_index_article_rep>
+              <div class="mt-4 px-4 first:mt-20 lg:first:mt-40 lg:mt-0 lg:px-0 lg:w-idx lg:mx-auto" data-mode="list">
+                <div class="post">
+                  <s_notice_rep_thumbnail><a class="thumbnail" href="[##_notice_rep_link_##]"><img class="lazyload object-cover bg-h-100" data-src="[##_notice_rep_thumbnail_url_##]" data-sizes="auto" alt=""></a></s_notice_rep_thumbnail>
+                  <div class="description flex flex-col">
+                    <div class="title"><a class="text-h-800 dark:text-h-200 [&_img]:hidden" href="[##_notice_rep_link_##]">[##_notice_rep_title_##]</a></div>
+                    <div class="metainfo flex gap-x-1 text-sm"><time class="text-h-400">[##_notice_rep_date_##]</time></div>
+                    <div class="summary relative overflow-hidden text-h-400 leading-7 text-sm">[##_notice_rep_summary_##]</div>
+                  </div>
+                </div>
+              </div>
+            </s_index_article_rep>
+            <s_permalink_article_rep>
+              <div id="permalink">
+                <header class="h-64 mb-10 flex justify-center items-center border-b border-b-solid border-b-h-200 dark:border-b-h-700 lg:mb-16">
+                  <s_notice_rep_thumbnail>
+                    <div class='thumbnail absolute right-0 top-0 w-full h-64 before:backdrop-blur before:content-[""] before:absolute before:right-0 before:top-0 before:w-full before:h-64 before:bg-h-900/50 before:z-10 [&+.description]:text-h-200'><img class="absolute right-0 top-0 w-full h-64 z-0 object-cover" src="[##_notice_rep_thumbnail_url_##]" alt=""></div>
+                  </s_notice_rep_thumbnail>
+                  <div class="description flex flex-col items-center gap-y-3 z-20 relative mx-4 text-h-800 dark:text-h-200 lg:mx-0">
+                    <h1 class="text-center font-bold text-2xl lg:text-3xl">[##_notice_rep_title_##]</h1>
+                    <div class="flex gap-x-1 text-sm"><time>[##_notice_rep_date_##]</time><a class="/notice">· 공지사항</a></div>
+                  </div>
+                </header>
+                <div class="px-4 w-full lg:max-w-screen-lg lg:w-pem lg:px-0 lg:mx-auto">
+                  <article class="relative" id="content" x-ref="content">
+                    <div x-data="content">
+                      <s_if_var_toc><template x-if="$data.headings.length > 0">
+                          <div class="rounded-md p-5 mb-8 box-border bg-h-200 text-h-500 dark:bg-h-700 dark:text-h-200" id="TOC"><strong class="flex items-center justify-between text-overflow-hidden text-sm pb-2 mb-4 border-b border-solid border-h-400 dark:border-h-200"><span class="text-base">목차</span><i class="fas fa-bars"></i></strong>
+                            <ol class="flex flex-col gap-y-3"><template x-for="heading in $data.headings" :key="heading.id">
+                                <li :class='{ "pl-0": heading.tagName === "H2", "pl-4": heading.tagName === "H3" }'><a class="flex items-center justify-between text-sm duration-200 text-h-400 hover:text-h-600 dark:hover:text-h-200" :href="heading.href">
+                                    <div class="text-overflow-hidden" x-text="heading.text"></div><i class="fas fa-arrow-right scale-75"></i>
+                                  </a></li>
+                              </template></ol>
+                          </div>
+                        </template></s_if_var_toc>
+                      <div id="article" x-ref="article"><template x-ref="articleTemplate" x-teleport="#article">
+                          <div>[##_notice_rep_desc_##]</div>
+                        </template></div>
+                      <s_if_var_scrollspy><template x-if="$data.headings.length > 0">
+                          <div class="2xl:absolute 2xl:top-0 2xl:h-full 2xl:ml-[calc(((1100px+theme(width.pem))/2)+theme(spacing.5))]" id="scrollspy" x-data="scrollspy" @scroll.window="scrollspy" x-transition:enter="transition ease-linear duration-200" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" x-transition:leave="transition ease-linear duration-200" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0" x-show="show">
+                            <div class="2xl:sticky 2xl:top-20"><button class="fixed top-20 right-0 w-8 h-8 z-30 rounded-md bg-h-300 text-h-500 dark:bg-h-700 dark:text-h-200 2xl:hidden" x-show="! open" @click="toggle"><span class="text-hidden">목차</span><i class="fa-solid fa-list-check"></i></button>
+                              <div class="max-h-[calc(100vh-theme(spacing.20)-theme(spacing.10)-theme(spacing.3)-2rem)] overflow-hidden w-56 text-sm box-border max-2xl:transition-[right] max-2xl:duration-200 max-2xl:rounded-xl max-2xl:fixed max-2xl:top-20 max-2xl:right-4 max-2xl:z-40 max-2xl:bg-h-200 max-2xl:dark:bg-h-700 2xl:block" :class='open ? "max-2xl:right-4" : "max-2xl:-right-60"'>
+                                <div class="overflow-x-hidden overflow-y-scroll max-h-[inherit] w-[calc(theme(spacing.56)+theme(spacing.5))]"><button class="absolute text-base top-2 right-4 text-h-500 dark:text-h-200 2xl:hidden" @click="toggle"><span class="text-hidden">목차 닫기</span><i class="fa-solid fa-xmark"></i></button>
+                                  <ol class="flex flex-col gap-y-3 max-2xl:p-6 max-2xl:pt-8 max-2xl:pr-14 2xl:px-8" x-ref="spy"><template x-for="heading in $data.headings" :key="heading.id">
+                                      <li class="text-h-400" :class='{ "pl-0": heading.tagName === "H2", "pl-4": heading.tagName === "H3" }'><a class="duration-200 text-h-400 hover:text-h-600 dark:hover:text-h-200" :href="heading.href" x-text="heading.text" :class='{ "text-h-600 dark:text-h-200": heading.active }'></a></li>
+                                    </template></ol>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </template></s_if_var_scrollspy>
+                    </div>
+                  </article>
+                  <div x-data="{ shown: false }" x-intersect.once="shown = true">
+                    <footer x-show="shown">
+                      <div class="border-t border-b border-dotted border-h-400 mt-6 py-8 flex gap-x-5 items-center"><img class="lazyload rounded-full w-20 h-20" data-src="[##_image_##]" data-sizes="auto" width="80" height="80" alt="[##_blogger_##]">
+                        <div class="flex flex-col gap-y-1">
+                          <div class="text-h-800 dark:text-h-200 font-bold">[##_blogger_##]</div>
+                          <div class="leading-7 text-sm text-h-400">[##_desc_##]</div>
+                        </div>
+                      </div>
+                    </footer>
+                  </div>
+                </div>
+              </div>
+            </s_permalink_article_rep>
+          </s_notice_rep>
+          <s_tag>
+            <div class="w-full px-4 mt-20 lg:mt-40 lg:mx-auto lg:w-idx lg:px-0" id="tag-cloud">
+              <ul class="grid grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-6">
+                <s_tag_rep>
+                  <li class="px-4 py-5 text-overflow-hidden text-center rounded-md duration-200 w-full bg-h-200 text-h-500 hover:bg-h-600 hover:text-h-200 dark:text-h-400 dark:bg-h-700 dark:hover:bg-h-600"><a class="[##_tag_class_##]" href="[##_tag_link_##]">[##_tag_name_##]</a></li>
+                </s_tag_rep>
+              </ul>
+            </div>
+          </s_tag>
+          <s_list>
+            <section data-mode="[##_list_style_##]">
+              <!-- 메인 페이지 헤더 -->
+              <!--
+              <header class="h-64 mb-10 flex justify-center items-center border-b border-b-solid border-b-h-200 dark:border-b-h-700 lg:mb-16">
+                <s_list_image>
+                  <div class='thumbnail absolute right-0 top-0 w-full h-64 before:backdrop-blur before:content-[""] before:absolute before:right-0 before:top-0 before:w-full before:h-64 before:bg-h-900/50 before:z-10 [&+.description]:text-h-200'><img class="absolute right-0 top-0 w-full h-64 z-0 object-cover" src="[##_list_image_##]" alt=""></div>
+                </s_list_image>
+                <div class="description flex flex-col items-center z-20 relative mx-4 text-center text-h-800 dark:text-h-200 lg:mx-0">
+                  <h1 class="font-semibold text-2xl lg:text-3xl">[##_list_conform_##]</h1><span class="mt-3 empty:mt-0">[##_list_description_##]</span>
+                </div>
+              </header>
+              -->
+              <!-- 지브리 배너 헤더(24.12.02) -->
+              <header class="new_header h-64 mb-10 flex justify-center items-center border-b border-b-solid border-b-h-200 dark:border-b-h-700 lg:mb-16">
+                <!-- 메인 nav (24.12.04) 끝 -->
+                <div class="main-nav-container">
+                  <nav class="nav-bar btn-16-nav absolute top-4 right-4 z-30 flex gap-4 bg-black bg-opacity-50 px-4 py-2 rounded-md">
+                    <a class="btn-16" href="https://awesomepossum.tistory.com">Home</a>
+                    <a class="btn-16" href="https://awesomepossum.tistory.com/category/Algorithm">Algorithm</a>
+                    <a class="btn-16" href="https://awesomepossum.tistory.com/category/Coding">Coding</a>
+                    <a class="btn-16" href="https://awesomepossum.tistory.com/category/ETC">ETC.</a>
+                    <a class="btn-16" href="https://awesomepossum.tistory.com/guestbook">Visitor</a>
+                  </nav>
+                </div>
+                <!-- 메인 nav (24.12.04) 끝 -->
+                <div>           
+                  <img class="main-header-img absolute w-full right-0 top-0 z-0 object-cover" style="border-radius: 10px; height: 370px;" src="./images/catbywindow.jpg" alt="Banner">
+                </div>
+                <div class="description flex flex-col items-center z-20 relative mx-4 text-center text-h-800 dark:text-h-200 lg:mx-0">
+                  <h1 class="text-2xl lg:text-3xl b-main-title">My Tech Blog ([##_list_conform_##])</h1>
+                  <span class="mt-3 empty:mt-0" style="color: white;">[##_list_description_##]</span>
+                </div>
+              </header>
+              <!-- 지브리 배너 헤더(24.12.02) 끝 -->
+              <!-- 랜덤 명언 생성기(24.11.29) -->
+              <div id="dding_area"></div>
+              <!-- 랜덤 명언 생성기(24.11.29) 끝 -->
+
+              <!-- 메인 무비 리뷰 흐르는 이펙트 (24.12.02) 
+              <div class="movieReviewBox">
+                  <div class="image-container" id="image-container">
+                      <div class="image-box">
+                          <a href="https://awesomepossum.tistory.com/74" target="_blank">
+                              <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fc2qDSJ%2FbtsK39Y2lZm%2FItavG1SxSXeQwNLad18KU0%2Fimg.jpg" alt="The Two Popes">
+                              <div class="alt-text">The Two Popes</div>
+                          </a>
+                      </div>
+                      <div class="image-box">
+                          <a href="https://awesomepossum.tistory.com/181" target="_blank">
+                              <img src="https://blog.kakaocdn.net/dn/R2m7c/btsK5aW5odc/0lvZiIAmT9kcAQkQvKzCbK/img.gif" alt="JoJo Rabbit">
+                              <div class="alt-text">JoJo Rabbit</div>
+                          </a>
+                      </div>
+                      <div class="image-box">
+                          <a href="https://awesomepossum.tistory.com/304" target="_blank">
+                              <img src="https://blog.kakaocdn.net/dn/2rXoD/btsK4KLkkkV/KrKPNXFbnw1b6lCnunjHwK/img.gif" alt="The Grand Budapest Hotel">
+                              <div class="alt-text">The Grand Budapest Hotel</div>
+                          </a>
+                      </div>
+                      <div class="image-box">
+                          <a href="https://awesomepossum.tistory.com/70" target="_blank">
+                              <img src="https://blog.kakaocdn.net/dn/bbcOTW/btsK3PGAYVM/n1xlk6c3D7Tm8M6Ck6yxh1/img.gif" alt="The Fabelmans">
+                              <div class="alt-text">The Fabelmans</div>
+                          </a>
+                      </div>
+                      <div class="image-box">
+                          <a href="https://awesomepossum.tistory.com" target="_blank">
+                              <img src="https://blog.kakaocdn.net/dn/yitsM/btsK48ybV6B/iko4B3RbaKwVeyQYGA8Ps1/img.gif" alt="Florida Project">
+                              <div class="alt-text">Florida Project<br>(준비중)</div>
+                          </a>
+                      </div>
+                      <div class="image-box">
+                          <a href="https://awesomepossum.tistory.com" target="_blank">
+                              <img src="https://blog.kakaocdn.net/dn/brIPSs/btsK4LKaKQI/iwlZnI21UTSLCWNTIRe6f1/img.gif" alt="Leon">
+                              <div class="alt-text">Leon<br>(준비중)</div>
+                          </a>
+                      </div>
+                      <div class="image-box">
+                          <a href="https://awesomepossum.tistory.com/65" target="_blank">
+                              <img src="https://blog.kakaocdn.net/dn/bQdfDy/btsK5PdKIx0/BR1HDFwRwOAW7LW0RkSJpK/img.gif" alt="The Pianist">
+                              <div class="alt-text">The Pianist</div>
+                          </a>
+                      </div>
+                      <div class="image-box">
+                          <a href="https://awesomepossum.tistory.com" target="_blank">
+                              <img src="https://blog.kakaocdn.net/dn/biEofG/btsK4MI7lh8/sBDIX3EKOABN3mdhDo5MNk/img.gif" alt="Amadeus">
+                              <div class="alt-text">Amadeus<br>(준비중)</div>
+                          </a>
+                      </div>
+                      <div class="image-box">
+                          <a href="https://awesomepossum.tistory.com" target="_blank">
+                              <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fsv1Hm%2FbtsK4WdBrLC%2FjXENK616L5jnWOq5WQ8us1%2Fimg.jpg" alt="GAFARNAO">
+                              <div class="alt-text">가버나움<br>(준비중)</div>
+                          </a>
+                      </div>
+                      <div class="image-box">
+                          <a href="https://awesomepossum.tistory.com/177" target="_blank">
+                              <img src="https://blog.kakaocdn.net/dn/NBAEI/btsK4Zg54En/cCqo6dphzzfGLMSWrRlFn0/img.gif" alt="INSIDE OUT">
+                              <div class="alt-text">INSIDE OUT</div>
+                          </a>
+                      </div>
+                      <div class="image-box">
+                          <a href="https://awesomepossum.tistory.com/230" target="_blank">
+                              <img src="https://blog.kakaocdn.net/dn/mluhU/btsK4MPPvYo/9yhdFXDb2t0jqyWg1GAEvK/img.gif" alt="Dreamgirls">
+                              <div class="alt-text">Dreamgirls</div>
+                          </a>
+                      </div>
+                      <div class="image-box">
+                          <a href="https://awesomepossum.tistory.com/52" target="_blank">
+                              <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fk7xbt%2FbtsK5zvsJJp%2Fwh7HCzINhebhX0EPE6HQk1%2Fimg.jpg" alt="A dog of Flanders">
+                              <div class="alt-text">A dog of Flanders</div>
+                          </a>
+                      </div>
+                      <div class="image-box">
+                          <a href="https://awesomepossum.tistory.com/445" target="_blank">
+                              <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FplkpO%2FbtsK4WShQ6v%2FA4o8zi3SfDFhcd3f8VLVK1%2Fimg.png" alt="A river runs through it">
+                              <div class="alt-text">A river runs through it</div>
+                          </a>
+                      </div>
+                      <div class="image-box">
+                          <a href="https://awesomepossum.tistory.com" target="_blank">
+                              <img src="https://blog.kakaocdn.net/dn/caRYZQ/btsK6Bz2V1c/lAH3akCYFoW9XUMM1SCKH1/img.gif" alt="Forrest Gump">
+                              <div class="alt-text">Forrest Gump<br>(준비중)</div>
+                          </a>
+                      </div>
+                      <div class="image-box">
+                          <a href="https://awesomepossum.tistory.com" target="_blank">
+                              <img src="https://blog.kakaocdn.net/dn/LUsRb/btsK5nB0vvT/Ia4XljiKD89gvJyNgaYRA0/img.gif" alt="Call Me by Your Name">
+                              <div class="alt-text">Call Me by Your Name<br>(준비중)</div>
+                          </a>
+                      </div>
+                      <div class="image-box">
+                          <a href="https://awesomepossum.tistory.com/290" target="_blank">
+                              <img src="https://blog.kakaocdn.net/dn/dKo2vM/btsK4Y3zbwS/LjtDkatobXKQy9peRzELQK/img.gif" alt="Hercules">
+                              <div class="alt-text">Hercules</div>
+                          </a>
+                      </div>
+                      <div class="image-box">
+                          <a href="https://awesomepossum.tistory.com" target="_blank">
+                              <img src="https://blog.kakaocdn.net/dn/roox2/btsK4vUWCWG/yFD2BzM8R07CmwxAUmXav1/img.gif" alt="Harry Potter">
+                              <div class="alt-text">Harry Potter<br>(준비중)</div>
+                          </a>
+                      </div>
+                      <div class="image-box">
+                          <a href="https://awesomepossum.tistory.com" target="_blank">
+                              <img src="https://blog.kakaocdn.net/dn/VdMad/btsK5GgUsX9/4YtW93K3DGGicQp3yOKWk1/img.gif" alt="SpongeBob">
+                              <div class="alt-text">SpongeBob<br>(준비중)</div>
+                          </a>
+                      </div>
+                      <div class="image-box">
+                          <a href="https://awesomepossum.tistory.com" target="_blank">
+                              <img src="https://blog.kakaocdn.net/dn/4e9YD/btsK4e60UtB/YBC19ml1TBaXTYuxOWZcT0/img.gif" alt="Toy Story">
+                              <div class="alt-text">Toy Story<br>(준비중)</div>
+                          </a>
+                      </div>
+                      <div class="image-box">
+                          <a href="https://awesomepossum.tistory.com" target="_blank">
+                              <img src="https://blog.kakaocdn.net/dn/JzRdA/btsK344EPay/O8PX03MPTXQlExnLluXbM1/img.gif" alt="Singing in the Rain">
+                              <div class="alt-text">Singing in the Rain<br>(준비중)</div>
+                          </a>
+                      </div>
+                  </div>
+              </div>
+              <br>
+              <br>
+              메인 무비 리뷰 흐르는 이펙트 (24.12.02) 끝 -->
+              <div class="list px-4 lg:px-0 lg:w-idx lg:mx-auto" x-ref="list">
+                <s_list_rep>
+                  <div class="post">
+                    <s_list_rep_thumbnail><a class="thumbnail" href="[##_list_rep_link_##]"><img class="lazyload object-cover bg-h-100" data-src="[##_list_rep_thumbnail_##]" data-sizes="auto" alt=""></a></s_list_rep_thumbnail>
+                    <div class="description flex flex-col">
+                      <div class="title"><a class="text-h-800 dark:text-h-200 [&_img]:hidden" href="[##_list_rep_link_##]">[##_list_rep_title_##]</a></div>
+                      <div class="metainfo flex gap-x-1 text-sm"><time class="text-h-400">[##_list_rep_regdate_##]</time><a class="text-h-400" href="[##_list_rep_category_link_##]">· [##_list_rep_category_##]</a></div>
+                      <div class="summary relative overflow-hidden text-h-400 leading-7 text-sm">[##_list_rep_summary_##]</div>
+                    </div>
+                  </div>
+                </s_list_rep>
+              </div>
+            </section>
+          </s_list>
+          <s_paging>
+            <ul class="flex justify-center items-center mt-8 lg:mt-20" id="paging">
+              <li><a class="[##_no_more_prev_##]" [##_prev_page_##]=""><span class="text-hidden">이전</span><i class="fa fa-angle-left"></i></a></li>
+              <s_paging_rep>
+                <li><a [##_paging_rep_link_##]="">[##_paging_rep_link_num_##]</a></li>
+              </s_paging_rep>
+              <li><a class="[##_no_more_next_##]" [##_next_page_##]=""><i class="fa fa-angle-right"></i><span class="text-hidden">다음</span></a></li>
+            </ul>
+          </s_paging>
+        </main>
+        <aside class="h-full fixed top-0 w-s overflow-hidden z-40 transition-[left] duration-200 p-0 bg-h-200 dark:bg-h-700 <s_if_var_sidebar>xl:left-0</s_if_var_sidebar>" id="sidebar" :class='sidebar ? "left-0" : "-left-[calc(theme(width.s))]"'>
+          <div class="flex flex-col gap-y-6 overflow-x-hidden overflow-y-scroll h-full w-[calc(theme(width.s)+theme(spacing.8))] absolute py-6 border-box">
+            <s_sidebar>
+              <s_sidebar_element><!-- 뮤직플레이어 (24.12.03) -->
+                <div class="music-body">
+                  <div class="music-container" id="music-container">
+                      <div class="music-info">
+                          <h2 id="title" class="title"></h2>
+                          <div class="progress-container" id="progress-container">
+                          <div class="progress" id="progress"></div>
+                          </div>
+                      </div>
+                      <audio src=""
+                      id="audio"></audio>
+                      <div class="img-container">
+                      <img decoding="async" src=""
+                              alt="music-cover"
+                              id="cover" />
+                      </div>
+                      <div class="navigation">
+                          <button id="prev" class="action-btn">
+                          <i class="fas fa-backward"></i>
+                          </button>
+                          <button id="play" class="action-btn action-btn-big">
+                          <i class="fas fa-play"></i>
+                          </button>
+                          <button id="next" class="action-btn">
+                          <i class="fas fa-forward"></i>
+                          </button>
+                      </div>
+                      <div class="buildings-container">
+                        <img class="buildings" src="./images/moonbuildings.png" alt="">
+                      </div>
+                  </div>
+                </div>
+              </s_sidebar_element><!-- 뮤직플레이어 (24.12.03) 끝 -->
+              <s_sidebar_element><!-- 프로필-->
+                <div class="sidebar-element">
+                  <div class="text-center flex flex-col items-center my-4"><img class="rounded-full" src="[##_image_##]" width="100" height="100" alt="[##_blogger_##]">
+                    <div><a class="link_tit inline-block pt-4 pb-1 font-medium" href="[##_blog_link_##]">[##_title_##]</a></div>
+                    <div class="text-h-400 text-sm">[##_blogger_##]</div>
+                    <!-- 네이버지식인 뱃지(24.11.13) -->
+                    <br>
+                    <div class="text-h-400 text-sm">
+                      <div style="height: 30px;">
+                        <a href="https://github.com/awesomepossumgirl" style="display: flex; justify-content: center;">
+                          <img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=GitHub&logoColor=white" alt="GitHub"/>
+                        </a>
+                      </div>
+                      <!-- 다인위키 -->
+                      <div style="height: 30px;">
+                        <a href="http://dainwiki.com/" style="display: flex; justify-content: center;">
+                          <img src="https://img.shields.io/badge/Dainwiki-1976D2?style=for-the-badge&logo=wikipedia&logoColor=white" alt="GitHub"/>
+                        </a>
+                      </div>
+                      <!--
+                      <a href="https://kin.naver.com/profile/index.naver?u=eqpeRcAiMURRkE5zNOTm%2BXXnpeokqihCdmSU9RA51EA%3D" style="display: flex; justify-content: center;">
+                        <img src="https://img.shields.io/badge/Naver-03C75A?style=for-the-badge&logo=Naver&logoColor=white" alt="Naver"/>
+                      </a>
+                      -->
+                    </div>
+                    <!-- 네이버지식인 뱃지(24.11.13) -->
+                  </div>
+                </div>
+              </s_sidebar_element>
+             
+              <s_sidebar_element><!-- 방문자 수-->
+                <div class="sidebar-element">
+                  <div class="overflow-hidden flex justify-between" id="counter">
+                    <div>
+                      <div class="text-left">
+                        <div class="title">전체</div>
+                        <div class="count">[##_count_total_##]</div>
+                      </div>
+                    </div>
+                    <div class="flex gap-x-2 text-right">
+                      <div>
+                        <div class="title">오늘</div>
+                        <div class="count">[##_count_today_##]</div>
+                      </div>
+                      <div>
+                        <div class="title">어제</div>
+                        <div class="count">[##_count_yesterday_##]</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </s_sidebar_element>
+              <s_sidebar_element><!-- 검색-->
+                <div class="sidebar-element">
+                  <s_search>
+                    <div class="flex items-center gap-x-3 border-box px-4 py-3 bg-h-300 text-h-600 dark:bg-h-600 dark:text-h-300"><label for="search"><span class="text-hidden">검색</span><i class="text-sm fa-solid fa-magnifying-glass"></i></label><input class="text-sm text-overflow-hidden border-none outline-none bg-h-300 dark:bg-h-600" id="search" name="[##_search_name_##]" value="[##_search_text_##]" onkeypress="if (event.keyCode == 13) { [##_search_onclick_submit_##] }"></div>
+                  </s_search>
+                </div>
+              </s_sidebar_element>
+              <s_sidebar_element><!-- 카테고리-->
+                <div class="sidebar-element">
+                  <div id="category" x-data="category">[##_category_list_##]</div>
+                </div>
+              </s_sidebar_element>
+              <s_sidebar_element><!-- 블로그 메뉴-->
+                <div class="sidebar-element">
+                  <div id="blogmenu">
+                    <h2>블로그 메뉴</h2>[##_blog_menu_##]
+                  </div>
+                </div>
+              </s_sidebar_element>
+              <s_sidebar_element><!-- 공지사항-->
+                <div class="sidebar-element">
+                  <div>
+                    <h2><a class="link_tit" href="/notice">공지사항</a></h2>
+                    <s_rct_notice>
+                      <ul class="flex flex-col gap-y-4 text-sm">
+                        <s_rct_notice_rep>
+                          <li><i class="fa-regular fa-bell text-h-400 mr-2"></i><a href="[##_notice_rep_link_##]">[##_notice_rep_title_##]</a></li>
+                        </s_rct_notice_rep>
+                      </ul>
+                    </s_rct_notice>
+                  </div>
+                </div>
+              </s_sidebar_element>
+              <s_sidebar_element><!-- 인기 글-->
+                <div class="sidebar-element">
+                  <div>
+                    <h2>인기 글</h2>
+                    <ul class="flex flex-col gap-y-4 text-sm">
+                      <s_rctps_popular_rep>
+                        <li class="flex justify-between">
+                          <div class="text-overflow-hidden text-h-400"><a href="[##_rctps_rep_link_##]">[##_rctps_rep_title_##]</a>
+                            <div class="mt-1 text-xs">[##_rctps_rep_simple_date_##]</div>
+                          </div>
+                          <s_rctps_rep_thumbnail><img class="lazyload object-cover ml-3 bg-h-100 w-16 h-11" data-src="[##_rctps_rep_thumbnail_##]" data-sizes="auto" alt="" width="64" height="44"></s_rctps_rep_thumbnail>
+                        </li>
+                      </s_rctps_popular_rep>
+                    </ul>
+                  </div>
+                </div>
+              </s_sidebar_element>
+              <s_sidebar_element><!-- 태그-->
+                <div class="sidebar-element">
+                  <div>
+                    <h2><a class="link_tit" href="/tag">태그</a></h2>
+                    <ul class="flex flex-col gap-y-4 text-sm">
+                      <s_random_tags>
+                        <li><i class="fa fa-tag mr-2"></i><a class="[##_tag_class_##]" href="[##_tag_link_##]">[##_tag_name_##]</a></li>
+                      </s_random_tags>
+                    </ul>
+                  </div>
+                </div>
+              </s_sidebar_element>
+              <s_sidebar_element><!-- 최근 댓글-->
+                <div class="sidebar-element">
+                  <div>
+                    <h2>최근 댓글</h2>
+                    <ul class="flex flex-col gap-y-4">
+                      <s_rctrp_rep>
+                        <li class="text-h-400">
+                          <div class="text-overflow-hidden text-sm"><i class="fa-regular fa-comment-dots font-normal mr-2"></i><a href="[##_rctrp_rep_link_##]">[##_rctrp_rep_desc_##]</a></div>
+                          <div class="mt-1 text-h-400 text-xs flex gap-x-1">
+                            <div>[##_rctrp_rep_name_##]</div>
+                            <div>· [##_rctrp_rep_time_##]</div>
+                          </div>
+                        </li>
+                      </s_rctrp_rep>
+                    </ul>
+                  </div>
+                </div>
+              </s_sidebar_element>
+              <s_sidebar_element><!-- 최근 글-->
+                <div class="sidebar-element">
+                  <div>
+                    <h2>최근 글</h2>
+                    <ul class="flex flex-col gap-y-4 text-sm">
+                      <s_rctps_rep>
+                        <li class="flex justify-between">
+                          <div class="text-overflow-hidden text-h-400"><a href="[##_rctps_rep_link_##]">[##_rctps_rep_title_##]</a>
+                            <div class="mt-1 text-xs">[##_rctps_rep_simple_date_##]</div>
+                          </div>
+                          <s_rctps_rep_thumbnail><img class="lazyload object-cover ml-3 bg-h-100 w-16 h-11" data-src="[##_rctps_rep_thumbnail_##]" data-sizes="auto" alt="" width="64" height="44"></s_rctps_rep_thumbnail>
+                        </li>
+                      </s_rctps_rep>
+                    </ul>
+                  </div>
+                </div>
+              </s_sidebar_element>
+            </s_sidebar>
+            <div class="sidebar-element">
+              <div class="text-h-400" id="copyright">
+                <div class="flex justify-between"><!--이 부분은 스킨 소개페이지 및 제작자의 깃허브 링크로 이동됩니다.
+hELLO 는 무료인 만큼, 링크의 주소는 반드시 지켜주시기 바랍니다.--><small><a href="https://pronist.tistory.com/5">hELLO</a> · Designed By <a href="https://github.com/pronist">정상우</a>.</small><small>v4.2.2</small></div>
+              </div>
+            </div>
+          </div><template x-teleport="body">
+            <div class="fixed top-0 left-0 w-screen h-screen bg-h-900/50 backdrop-blur z-30 duration-200" x-show="sidebar" x-transition:enter="transition ease-linear duration-300" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" x-transition:leave="transition ease-linear duration-300" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0" @click="sidebar = false"></div>
+          </template>
+        </aside>
+        <div class="w-full box-border px-4 h-14 top-0 fixed flex justify-between items-center z-30 backdrop-blur bg-h-100/50 dark:bg-h-800/80 xl:px-5 <s_if_var_sidebar>xl:w-c</s_if_var_sidebar>" x-data="top" @scroll.window="toggle" x-show="open" x-transition:enter="transition ease-linear duration-300" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" x-transition:leave="transition ease-linear duration-300" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0">
+          <div class="w-9 h-9"><img class="lazyload rounded-full w-9 h-9 cursor-pointer <s_if_var_sidebar>xl:invisible</s_if_var_sidebar>" @click="sidebar = ! sidebar" data-src="[##_image_##]" data-sizes="auto" alt="[##_blogger_##]" width="36" height="36"></div>
+          <div class="max-w-[calc(80vw-152px)] h-5">
+            <div class="m-0 text-overflow-hidden text-sm font-bold text-h-800 dark:text-h-200">[##_page_title_##]</div>
+          </div>
+        </div>
+        <div class="flex justify-end px-4 w-full box-border fixed text-sm z-30 bottom-3 xl:bottom-4 <s_if_var_sidebar>xl:w-c</s_if_var_sidebar>" id="bottom">
+          <div class="flex gap-x-3">
+          <button class="subscription flex justify-center items-center w-9 h-9 outline-0 bg-h-200 text-h-500 hover:bg-h-300 dark:text-h-200 dark:bg-h-700 dark:hover:bg-h-600 btn_menu_toolbar btn_subscription #subscribe" x-data="{ subscribed: T.config.SUBSCRIPTION.isConnected }" x-show='T.config.ROLE !== "owner" && /^(.*tistory\.com)$/.test(location.hostname)' :data-blog-id="T.config.BLOG.id" :data-url="TistoryBlog.tistoryUrl" @click="subscribed = ! subscribed"><span class="text-hidden">구독하기</span><i class="fa-star text-sm" :class='subscribed ? "fa-solid" : "fa-regular"'></i></button>
+          <button x-data="theme" @click="toggle"><span class="text-hidden">테마</span><i class="fa-solid fa-moon text-base"></i></button>
+          <a href="#hELLO"><span class="text-hidden">상단으로</span><i class="fa-solid fa-chevron-up text-base"></i></a>
+          </div>
+        </div>
+      </div>
+    </s_t3>
+    <!-- 코드블럭 인라인넘버 커스텀(24.11.09) -->
+    <script defer src='//cdn.jsdelivr.net/npm/highlightjs-line-numbers.js@2.8.0/dist/highlightjs-line-numbers.min.js'></script>
+    <script>
+      window.addEventListener('load', () => {
+        hljs.initLineNumbersOnLoad()
+      })
+    </script>
+    <!-- 코드블럭 인라인넘버 커스텀(24.11.09) 끝 -->
+    <!-- 백틱으로 인라인 코드블럭 커스텀(24.11.12) -->
+    <script defer>
+        window.addEventListener('load', () => {
+        let textNodes = document.querySelectorAll("div.tt_article_useless_p_margin.contents_style > *:not(figure):not(pre)");
+        textNodes.forEach(node => {
+          node.innerHTML = node.innerHTML.replace(/`(.*?)`/g, '<code>$1</code>');
+        });
+        })
+    </script>
+    <!-- 백틱으로 인라인 코드블럭 커스텀(24.11.12) 끝 -->
+
+    <!-- 메인 무비 리뷰 흐르는 이펙트 js (24.12.02) -->
+    <script>
+      const container = document.querySelector('.movieReviewBox .image-container');
+      const boxes = Array.from(container.children);
+  
+      // 초기 위치 설정
+      boxes.forEach((box, index) => {
+          box.style.left = `${index * 155}px`; // 이미지 간 간격 포함 (150px + 10px)
+          box.style.position = 'absolute'; // 움직이는 애니메이션용
+      });
+  
+      let animationId;
+  
+      function animate() {
+          boxes.forEach((box) => {
+              const currentLeft = parseFloat(box.style.left);
+              box.style.left = `${currentLeft - 0.33}px`; // 0.33px씩 왼쪽으로 이동
+  
+              // 이미지가 컨테이너 왼쪽 밖으로 나가면 다시 오른쪽 끝으로 이동
+              if (currentLeft < -150) { // 150px 크기의 이미지
+                  box.style.left = `${(boxes.length - 1) * 160}px`; // 150px + 10px
+              }
+          });
+  
+          animationId = requestAnimationFrame(animate);
+      }
+  
+      // 애니메이션 시작
+      animate();
+  
+      // 애니메이션 정지 및 재개 (옵션)
+      container.addEventListener('mouseenter', () => cancelAnimationFrame(animationId));
+      container.addEventListener('mouseleave', animate);
+    </script>
+    <!-- 메인 무비 리뷰 흐르는 이펙트 js (24.12.02) 끝 -->
+    <!-- 뮤직플레이어 js (24.12.03) -->
+    <script>
+      const musicBody = document.querySelector(".music-body");
+      const musicContainer = document.getElementById("music-container");
+      const playButton = document.getElementById("play");
+      const prevButton = document.getElementById("prev");
+      const nextButton = document.getElementById("next");
+      const audio = document.getElementById("audio");
+      const progress = document.getElementById("progress");
+      const progressContainer = document.getElementById("progress-container");
+      const title = document.getElementById("title");
+      const cover = document.getElementById("cover");
+      
+      // 개별 파일 경로와 이름 지정
+      const songs = [
+          {
+          title: "Second Run",
+          audioPath: "https://blog.kakaocdn.net/dn/dtlBbk/btsLOpr571T/Gwyjk47wQ9tQPjpgA7htf0/Second%20Run-1-Vanilla%20Mood.mp3?attach=1&knm=tfile.mp3",
+          imagePath: "https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FzBvYx%2FbtsLMGa2t2g%2FsREsJd1L3uUPkH3EQN8sy1%2Fimg.png",
+          bgColor: "linear-gradient(to top, #ffa500, #ffec99, #add8e6, #87cefa, #4682b4)"
+          },
+          {
+          title: "Don't dream",
+          audioPath: "https://blog.kakaocdn.net/dn/b4uDYo/btsK7SaYkj7/DObNELD5iWwbKpc6BS7C4K/Don%27t%20Dream%20It%27s%20Over-12-LoLo.mp3?attach=1&knm=tfile.mp3",
+          imagePath: "https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbLAwmg%2FbtsK6p1U58g%2F4U3dEixaiWabikqgN8hikK%2Fimg.jpg",
+          bgColor: "linear-gradient(to top, #ffd700, #ff7e5f, #ff4500, #ff6e7f, #d65db1)"   
+          },
+          {
+          title: "Stars",
+          audioPath: "https://blog.kakaocdn.net/dn/cKUPYr/btsK5nituSj/GImF47VH4beUoo0X74KEk0/stars.mp3?attach=1&knm=tfile.mp3",
+          imagePath: "https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FsRv5z%2FbtsK4Z91kqf%2Fk53ueCEC3U7uB7ZRCCaBW1%2Fimg.png",
+          bgColor: "linear-gradient(to top, #ff416c, #ff8a5c, #6cc0ff, #3f4a68)"  
+          },
+      ];
+      
+      let songIndex = 0; // 기본으로 첫 번째 곡 설정
+      
+      // 노래 정보를 불러오는 함수
+      function loadSong(song) {
+          title.innerText = song.title; // 제목 설정
+          audio.src = song.audioPath; // 오디오 경로 설정
+          cover.src = song.imagePath; // 이미지 경로 설정
+          musicBody.style.background = song.bgColor;
+      }
+      
+      // 노래 재생
+      function playSong() {
+          musicContainer.classList.add("play");
+          playButton.querySelector("i.fas").classList.remove("fa-play");
+          playButton.querySelector("i.fas").classList.add("fa-pause");
+          audio.play();
+      }
+      
+      // 노래 일시 정지
+      function pauseSong() {
+          musicContainer.classList.remove("play");
+          playButton.querySelector("i.fas").classList.remove("fa-pause");
+          playButton.querySelector("i.fas").classList.add("fa-play");
+          audio.pause();
+      }
+      
+      // 이전 곡으로 이동
+      function prevSong() {
+          songIndex--;
+          if (songIndex < 0) songIndex = songs.length - 1;
+          loadSong(songs[songIndex]);
+          playSong();
+      }
+      
+      // 다음 곡으로 이동
+      function nextSong() {
+          songIndex++;
+          if (songIndex > songs.length - 1) songIndex = 0;
+          loadSong(songs[songIndex]);
+          playSong();
+      }
+      
+      // 진행 바 업데이트
+      function updateProgress(e) {
+          const { duration, currentTime } = e.srcElement;
+          const progressPercent = (currentTime / duration) * 100;
+          progress.style.width = `${progressPercent}%`;
+      }
+      
+      // 진행 바 클릭 시 위치 설정
+      function setProgress(e) {
+          const width = this.clientWidth;
+          const clickX = e.offsetX;
+          const duration = audio.duration;
+          audio.currentTime = (clickX / width) * duration;
+      }
+      
+      // 이벤트 리스너
+      playButton.addEventListener("click", () => {
+          const isPlaying = musicContainer.classList.contains("play");
+          isPlaying ? pauseSong() : playSong();
+      });
+      
+      prevButton.addEventListener("click", prevSong);
+      nextButton.addEventListener("click", nextSong);
+      
+      audio.addEventListener("timeupdate", updateProgress);
+      progressContainer.addEventListener("click", setProgress);
+      
+      audio.addEventListener("ended", nextSong);
+      
+      // 첫 곡 로드
+      loadSong(songs[songIndex]);
+    </script> 
+    <!-- 뮤직플레이어 js (24.12.03) 끝 -->
+  </body>
+</html>
