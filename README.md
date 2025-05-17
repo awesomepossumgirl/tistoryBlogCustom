@@ -44,7 +44,20 @@
 - 2025.04.18 - 마우스 커서 이펙트 추가  
   → 커서 따라 별똥별 이펙트 (`JavaScript`, Canvas API)
 
+## 📦 사용한 외부 라이브러리
 
+- [Clipboard.js](https://clipboardjs.com/) - MIT License  
+  Used for enabling copy-to-clipboard buttons on code blocks.
+
+- [highlight.js](https://highlightjs.org/) - BSD 3-Clause  
+  Syntax highlighting for code blocks.
+
+- [Font Awesome](https://fontawesome.com/) - CC BY 4.0  
+  Icons used across the blog theme.
+
+- [Google Fonts (SUIT, Jua, Gowun Batang)](https://fonts.google.com/) - SIL Open Font License
+
+※ 모든 외부 리소스는 CDN으로 연결되어 있으며, 라이선스에 따라 사용하였습니다.
 
 
 ## 추후 반영 내역
