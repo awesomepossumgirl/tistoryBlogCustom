@@ -47,17 +47,43 @@
 ## 📦 사용한 외부 라이브러리
 
 - [Clipboard.js](https://clipboardjs.com/) - MIT License  
-  Used for enabling copy-to-clipboard buttons on code blocks.
+  코드 블럭 복사 버튼 기능 구현에 사용했습니다.
 
 - [highlight.js](https://highlightjs.org/) - BSD 3-Clause  
-  Syntax highlighting for code blocks.
-
+  코드 블럭에 문법 하이라이팅 적용. vs2025테마 및 line-numbers 플로그인 사용
+  코드 폰트 색상/스타일과 줄번호 구현
+  
 - [Font Awesome](https://fontawesome.com/) - CC BY 4.0  
-  Icons used across the blog theme.
+  아이콘 폰트로 UI 요소 꾸미는데 사용되었습니다. 
 
-- [Google Fonts (SUIT, Jua, Gowun Batang)](https://fonts.google.com/) - SIL Open Font License
+- [Google Fonts](https://fonts.google.com/) - SIL Open Font License
+  - SUIT (cdn.jsdelivr 제공, @sunn-us/SUIT)
+  - Jua
+  - Gowun Batang
+  - Grandiflora One
+
+- [D2Coding Font(서브셋)] - Apache License 2.0
+  - 개발자용 고정폭 폰트로 코드 가독성 향상
+ 
+    
+## 그 외 기타 코드 및 스크립트
+
+- Tinkerbell Magic Sparkle (마우스 이펙트)
+  - 출처: mf2fm.com
+  - 2005~2013 © mf2fm web-design
+  - 라이선스 명시는 없지만 대부분 퍼블릭 도메인 또는 비상업적 사용 허용
+
+- sayDding.js
+  - 랜덤 명언 생성기
+  - Aleph Kim님 블로그 (https://url.kr/9nawq2)
 
 ※ 모든 외부 리소스는 CDN으로 연결되어 있으며, 라이선스에 따라 사용하였습니다.
+
+## 직접 커스텀 (html/css 소스 안에 포함)
+
+- 뮤직 플레이어 
+- 사이드바, 메인 헤더, 썸네일 헤더 : hover 효과
+- 프로필 테두리 등
 
 
 ## 추후 반영 내역
